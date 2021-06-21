@@ -5,14 +5,14 @@ const _ = require("lodash");
 describe("puzzleService", () => {
   describe("isPuzzleSolved", () => {
     it("should return true if puzzle is solved", () => {
-      const sample = [
+      const solvedPuzzle = [
         [1, 2, 3, 4],
         [5, 6, 7, 8],
         [9, 10, 11, 12],
         [13, 14, 15, ""],
       ];
 
-      expect(puzzleService.isPuzzleSolved(sample)).to.be.equal(true);
+      expect(puzzleService.isPuzzleSolved(solvedPuzzle)).to.be.equal(true);
     });
     it("should return false if puzzle is not solved", () => {
       const notSolvedPuzzles = require("./notSolvedPuzzles.json");

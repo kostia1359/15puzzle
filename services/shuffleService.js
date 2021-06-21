@@ -1,5 +1,6 @@
 const arrayHelper = require("../helpers/arrayHelper");
 const { BLANK_TILE_SYMBOL } = require("./../constants");
+const { isPuzzleSolved } = require("./puzzleService");
 
 const countInversions = (puzzle) => {
   const flatPuzzle = puzzle.flat();
@@ -41,7 +42,7 @@ const getBottomRowWithBlankSymbol = (puzzle) => {
 const createRandomPuzzle = (dimension) => {
   const flatMatrix = arrayHelper.shuffle(
     arrayHelper
-      .createArrayFrom1ToN(dimension * dimension + 1)
+      .createArrayFrom1ToN(dimension * dimension - 1)
       .concat(BLANK_TILE_SYMBOL)
   );
 
@@ -79,6 +80,10 @@ const createSolvablePuzzle = (dimension) => {
     swap(puzzle, [1, 0], [1, 1]);
   } else {
     swap(puzzle, [0, 0], [0, 1]);
+  }
+
+  if (isPuzzleSolved(puzzle)) {
+    return createSolvablePuzzle(dimension);
   }
   return puzzle;
 };
