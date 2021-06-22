@@ -70,6 +70,9 @@ const createSolvablePuzzle = (dimension) => {
   const puzzle = createRandomPuzzle(dimension);
 
   if (isPuzzleSolvable(puzzle)) {
+    if (isPuzzleSolved(puzzle)) {
+      return createSolvablePuzzle(dimension);
+    }
     return puzzle;
   }
 
